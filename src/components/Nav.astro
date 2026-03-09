@@ -1,0 +1,156 @@
+---
+const currentPath = Astro.url.pathname;
+const base = '/personal-website';
+
+const links = [
+  { href: `${base}/`, label: 'Home' },
+  { href: `${base}/about`, label: 'About Me' },
+  { href: `${base}/gallery`, label: 'Gallery' },
+  { href: `${base}/resume`, label: 'Resume' },
+];
+
+function isActive(href: string) {
+  if (href === `${base}/`) {
+    return currentPath === `${base}/` || currentPath === `${base}`;
+  }
+  return currentPath.startsWith(href);
+}
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-18">
+      <!-- Logo -->
+      <a
+        href={`${base}/`}
+        class="font-heading text-2xl font-semibold tracking-tight text-charcoal hover:opacity-70 transition-opacity duration-300"
+        style="font-family: var(--font-heading);"
+      >
+        Sena Flo
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-8">
+        {links.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'relative py-1 text-sm font-medium tracking-wide uppercase transition-colors duration-300 nav-link',
+              isActive(link.href)
+                ? 'text-charcoal after:scale-x-100'
+                : 'text-gray-500 hover:text-charcoal',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="menu-toggle"
+        class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 group"
+        aria-label="Toggle menu"
+      >
+        <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-charcoal transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out bg-cream/95 backdrop-blur-lg"
+  >
+    <div class="px-6 py-4 flex flex-col gap-4 border-t border-gray-200/50">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'text-base font-medium tracking-wide uppercase transition-colors duration-300 py-2',
+            isActive(link.href) ? 'text-charcoal' : 'text-gray-500 hover:text-charcoal',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer to prevent content from hiding behind fixed nav -->
+<div class="h-18"></div>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background-color: #1a1a1a;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+  .nav-link.after\:scale-x-100::after {
+    transform: scaleX(1);
+  }
+
+  #main-nav.scrolled {
+    background-color: rgba(250, 250, 245, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  #menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: translateY(4px) rotate(45deg);
+  }
+  #menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: translateY(-4px) rotate(-45deg);
+  }
+</style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    // Scroll effect
+    function onScroll() {
+      if (window.scrollY > 20) {
+        nav?.classList.add('scrolled');
+      } else {
+        nav?.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile toggle
+    toggle?.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      if (mobileMenu) {
+        if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+          mobileMenu.style.maxHeight = '0px';
+        } else {
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        }
+      }
+    });
+  });
+</script>

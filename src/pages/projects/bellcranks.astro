@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const base = '/personal-website';
+---
+
+<Layout title="Bellcranks & Dampers Lead | Sena Flo">
+  <!-- Hero Image -->
+  <section class="relative w-full h-[55vh] md:h-[70vh] overflow-hidden">
+    <img
+      src={`${base}/images/projects/bellcranks/machined-parts.jpeg`}
+      alt="CNC machined bellcrank parts"
+      class="w-full h-full object-cover"
+      style="animation: ken-burns 20s ease forwards;"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+      <div class="max-w-5xl mx-auto">
+        <h1
+          class="text-3xl md:text-5xl font-semibold text-white tracking-tight fade-in-up"
+          style="font-family: var(--font-heading);"
+        >
+          Bellcranks & Dampers Lead
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="max-w-5xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+    <div class="fade-in-up">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-600 max-w-3xl">
+        Designed the bellcranks and damper system for the 2026 FSAE autonomous vehicle. Optimized
+        suspension geometry for a ~1.1 motion ratio using OptimumKinematics. Designed CAD in
+        Solidworks and performed FEA via ANSYS Mechanical with a redesigned multi-body contact
+        stress setup. Manufactured on a CNC Mill using Fusion360 CAM.
+      </p>
+    </div>
+
+    <!-- Gallery: Design -->
+    <div class="mt-20">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Design</h2>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={`${base}/images/projects/bellcranks/cad-assembly.png`}
+            alt="Bellcrank & Damper CAD Assembly"
+            class="w-full h-auto object-contain bg-gray-50"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Bellcrank & Damper CAD Assembly</figcaption>
+      </figure>
+    </div>
+
+    <!-- Gallery: Analysis -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Analysis</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/optk-front-geo.png`}
+              alt="OptimumKinematics — Front Geometry Motion Ratio"
+              class="w-full h-auto object-contain bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">OptK — Front Geometry (MR: 1.07)</figcaption>
+        </figure>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/optk-rear-geo.png`}
+              alt="OptimumKinematics — Rear Geometry Motion Ratio"
+              class="w-full h-auto object-contain bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">OptK — Rear Geometry (MR: 1.13)</figcaption>
+        </figure>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/fea-setup.png`}
+              alt="ANSYS FEA — Boundary Conditions & Loading"
+              class="w-full h-auto object-contain bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">ANSYS FEA — Boundary Conditions & Loading</figcaption>
+        </figure>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/fea-stress.png`}
+              alt="ANSYS FEA — Von Mises Stress"
+              class="w-full h-auto object-contain bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">ANSYS FEA — Von Mises Stress</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Gallery: Manufacturing -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Manufacturing</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md bg-gray-900">
+            <video
+              src={`${base}/videos/bellcranks-machining.mov`}
+              class="w-full h-full object-cover"
+              controls
+              muted
+              playsinline
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">CNC Machining — Bellcrank</figcaption>
+        </figure>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/cnc-mill.jpeg`}
+              alt="Haas CNC Mill — Running Program"
+              class="w-full h-auto object-cover bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Haas CNC Mill — Running Program</figcaption>
+        </figure>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/machined-parts.jpeg`}
+              alt="CNC Machined Bellcranks"
+              class="w-full h-auto object-cover bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">CNC Machined Bellcranks</figcaption>
+        </figure>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/bellcranks/finished-part.jpg`}
+              alt="Finished Bellcrank Part"
+              class="w-full h-auto object-cover bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Finished Bellcrank Part</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-20 pt-8 border-t border-gray-200/60">
+      <div class="flex items-center justify-between">
+        <a
+          href={`${base}/projects/rear-wing`}
+          class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300"
+        >
+          <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          <span class="text-sm font-medium uppercase tracking-wide">Rear Wing</span>
+        </a>
+        <a
+          href={`${base}/projects/steering`}
+          class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300 ml-auto"
+        >
+          <span class="text-sm font-medium uppercase tracking-wide">Steering Lead</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const base = '/personal-website';
+
+const projects = [
+  {
+    title: 'Bellcranks & Dampers',
+    subtitle: 'CMR FSAE',
+    image: `${base}/images/projects/bellcranks/machined-parts.jpeg`,
+    href: `${base}/projects/bellcranks`,
+  },
+  {
+    title: 'Vibration & Tilt Robot',
+    subtitle: 'Senior Capstone',
+    image: `${base}/images/projects/robot/robot-front.jpg`,
+    href: `${base}/projects/robot`,
+  },
+  {
+    title: 'Rear Wing',
+    subtitle: 'Aerodynamics Lead',
+    image: `${base}/images/projects/rear-wing/car-rear.jpg`,
+    href: `${base}/projects/rear-wing`,
+  },
+  {
+    title: "It's Math, Not Rocket Science",
+    subtitle: 'Numerical Methods',
+    image: `${base}/images/projects/rocket-science/poster.png`,
+    href: `${base}/projects/rocket-science`,
+  },
+  {
+    title: 'Steering Lead',
+    subtitle: 'CMR FSAE',
+    image: `${base}/images/projects/steering/steering-on-car.png`,
+    href: `${base}/projects/steering`,
+  },
+  {
+    title: 'Steering',
+    subtitle: 'CMR FSAE',
+    image: `${base}/images/projects/steering/manufacturing-sparks.jpg`,
+    href: `${base}/projects/steering-manufacturing`,
+  },
+  {
+    title: 'Sudoku',
+    subtitle: 'Python Game',
+    image: `${base}/images/projects/sudoku-thumb.png`,
+    href: `${base}/projects/sudoku`,
+  },
+];
+---
+
+<Layout title="Gallery | Sena Flo">
+  <section class="max-w-7xl mx-auto px-6 lg:px-8 py-20 md:py-28">
+    <div class="fade-in-up mb-16">
+      <h1
+        class="text-4xl md:text-5xl font-semibold tracking-tight"
+        style="font-family: var(--font-heading);"
+      >
+        Project Gallery
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-gray-600 max-w-2xl">
+        A curated collection of my engineering and design projects.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
+      {projects.map((project) => (
+        <div class="fade-in-up">
+          <ProjectCard
+            title={project.title}
+            subtitle={project.subtitle}
+            image={project.image}
+            href={project.href}
+          />
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>

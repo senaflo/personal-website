@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const base = '/personal-website';
+---
+
+<Layout title="Vibration & Tilt Response Robot | Sena Flo">
+  <!-- Hero Image -->
+  <section class="relative w-full h-[55vh] md:h-[70vh] overflow-hidden">
+    <img
+      src={`${base}/images/projects/robot/robot-front.jpg`}
+      alt="Cell Culture Transport Robot"
+      class="w-full h-full object-cover"
+      style="animation: ken-burns 20s ease forwards;"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+    <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+      <div class="max-w-5xl mx-auto">
+        <h1
+          class="text-3xl md:text-5xl font-semibold text-white tracking-tight fade-in-up"
+          style="font-family: var(--font-heading);"
+        >
+          Vibration & Tilt Response Robot
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Description -->
+  <section class="max-w-5xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+    <div class="fade-in-up">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-600 max-w-3xl">
+        Senior capstone design project with a team of 5. Designed and built a tilt and vibration
+        attenuation robot for cell culture transport. Used ESP32 for data acquisition with FFT
+        vibration analysis, targeting 10–50 Hz reduction. Designed a passive suspension system
+        with a Stewart Platform and wired buck converters for LiPo battery power distribution.
+      </p>
+    </div>
+
+    <!-- Gallery: Robot -->
+    <div class="mt-20">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">The Robot</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/robot/robot-front.jpg`}
+              alt="Robot — Front 3/4 View"
+              class="w-full h-auto object-cover bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Robot — Front 3/4 View</figcaption>
+        </figure>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md">
+            <img
+              src={`${base}/images/projects/robot/robot-side-dark.jpg`}
+              alt="Robot — Side Profile"
+              class="w-full h-auto object-cover bg-gray-50"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Robot — Side Profile</figcaption>
+        </figure>
+      </div>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={`${base}/images/projects/robot/robot-side-light.jpg`}
+            alt="Robot — Side View with Stewart Platform"
+            class="w-full h-auto object-cover bg-gray-50"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Robot — Side View with Stewart Platform</figcaption>
+      </figure>
+    </div>
+
+    <!-- Gallery: Electronics -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Electronics</h2>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={`${base}/images/projects/robot/electronics-closeup.jpg`}
+            alt="ESP32 & Servo Electronics Close-up"
+            class="w-full h-auto object-cover bg-gray-50"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">ESP32 & Servo Electronics Close-up</figcaption>
+      </figure>
+    </div>
+
+    <!-- Demo Videos -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Demo</h2>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md bg-gray-900">
+          <video
+            src={`${base}/videos/robot-demo-2.mov`}
+            class="w-full h-auto"
+            controls
+            muted
+            playsinline
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Robot Demo</figcaption>
+      </figure>
+    </div>
+
+    <!-- Poster -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Poster</h2>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={`${base}/images/projects/robot/poster.jpg`}
+            alt="Cell Culture Transport Robot — Project Poster"
+            class="w-full h-auto object-contain bg-gray-50"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Cell Culture Transport Robot — Project Poster</figcaption>
+      </figure>
+    </div>
+
+    <!-- Team -->
+    <div class="mt-16">
+      <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Team</h2>
+
+      <figure class="fade-in-up mb-8">
+        <div class="overflow-hidden rounded-2xl shadow-md">
+          <img
+            src={`${base}/images/projects/robot/team-photo.jpeg`}
+            alt="Team at Poster Presentation"
+            class="w-full h-auto object-cover bg-gray-50"
+            loading="lazy"
+          />
+        </div>
+        <figcaption class="mt-3 text-sm text-gray-500 text-center italic">Team at Poster Presentation</figcaption>
+      </figure>
+    </div>
+
+    <!-- Navigation -->
+    <div class="mt-20 pt-8 border-t border-gray-200/60">
+      <div class="flex items-center justify-between">
+        <a
+          href={`${base}/projects/rocket-science`}
+          class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300"
+        >
+          <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          <span class="text-sm font-medium uppercase tracking-wide">Rocket Science</span>
+        </a>
+        <a
+          href={`${base}/projects/rear-wing`}
+          class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300 ml-auto"
+        >
+          <span class="text-sm font-medium uppercase tracking-wide">Rear Wing</span>
+          <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

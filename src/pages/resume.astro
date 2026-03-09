@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const base = '/personal-website';
+---
+
+<Layout title="Resume | Sena Flo">
+  <section class="max-w-4xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+    <div class="fade-in-up flex items-center justify-between mb-8">
+      <h1
+        class="text-4xl md:text-5xl font-semibold tracking-tight"
+        style="font-family: var(--font-heading);"
+      >
+        Resume
+      </h1>
+      <a
+        href={`${base}/resume.pdf`}
+        download
+        class="inline-flex items-center gap-2 px-6 py-2.5 bg-charcoal text-cream rounded-full text-sm font-medium tracking-wide uppercase hover:bg-gray-800 transition-colors duration-300"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12M12 16.5V3" />
+        </svg>
+        Download PDF
+      </a>
+    </div>
+
+    <div class="fade-in-up">
+      <div class="rounded-xl overflow-hidden shadow-lg border border-gray-200/60">
+        <img
+          src={`${base}/images/resume.png`}
+          alt="Sena Flo Resume"
+          class="w-full h-auto"
+        />
+      </div>
+    </div>
+  </section>
+</Layout>

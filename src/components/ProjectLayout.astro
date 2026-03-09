@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+interface GalleryImage {
+  src: string;
+  caption: string;
+  size?: 'full' | 'half';
+}
+
+interface GallerySection {
+  heading?: string;
+  images: GalleryImage[];
+}
+
+interface ProjectLink {
+  href: string;
+  label: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  heroImage?: string;
+  gallerySections?: GallerySection[];
+  videoSrc?: string;
+  videoCaption?: string;
+  prevProject?: ProjectLink;
+  nextProject?: ProjectLink;
+}
+
+const {
+  title,
+  description,
+  heroImage,
+  gallerySections = [],
+  videoSrc,
+  videoCaption,
+  prevProject,
+  nextProject,
+} = Astro.props;
+---
+
+<Layout title={`${title} | Sena Flo`}>
+  <!-- Hero Image -->
+  {heroImage ? (
+    <section class="relative w-full h-[55vh] md:h-[70vh] overflow-hidden">
+      <img
+        src={heroImage}
+        alt={title}
+        class="w-full h-full object-cover"
+        style="animation: ken-burns 20s ease forwards;"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+        <div class="max-w-5xl mx-auto">
+          <h1
+            class="text-3xl md:text-5xl font-semibold text-white tracking-tight fade-in-up"
+            style="font-family: var(--font-heading);"
+          >
+            {title}
+          </h1>
+        </div>
+      </div>
+    </section>
+  ) : (
+    <section class="max-w-5xl mx-auto px-6 lg:px-8 pt-32 md:pt-40 pb-8">
+      <h1
+        class="text-3xl md:text-5xl font-semibold text-charcoal tracking-tight fade-in-up"
+        style="font-family: var(--font-heading);"
+      >
+        {title}
+      </h1>
+    </section>
+  )}
+
+  <!-- Content -->
+  <section class="max-w-5xl mx-auto px-6 lg:px-8 py-16 md:py-24">
+    <div class="fade-in-up">
+      <p class="text-lg md:text-xl leading-relaxed text-gray-600 max-w-3xl">
+        {description}
+      </p>
+    </div>
+
+    <!-- Gallery Sections -->
+    {gallerySections.map((section) => (
+      <div class="mt-16">
+        {section.heading && (
+          <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">
+            {section.heading}
+          </h2>
+        )}
+        {/* Render images: group consecutive half-size images into rows */}
+        {(() => {
+          const elements: any[] = [];
+          let i = 0;
+          const imgs = section.images;
+          while (i < imgs.length) {
+            const img = imgs[i];
+            if (img.size === 'half' && i + 1 < imgs.length && imgs[i + 1].size === 'half') {
+              const img2 = imgs[i + 1];
+              elements.push(
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <figure class="fade-in-up">
+                    <div class="overflow-hidden rounded-2xl shadow-md">
+                      <img src={img.src} alt={img.caption} class="w-full h-auto object-contain bg-gray-50" loading="lazy" />
+                    </div>
+                    <figcaption class="mt-3 text-sm text-gray-500 text-center italic">{img.caption}</figcaption>
+                  </figure>
+                  <figure class="fade-in-up">
+                    <div class="overflow-hidden rounded-2xl shadow-md">
+                      <img src={img2.src} alt={img2.caption} class="w-full h-auto object-contain bg-gray-50" loading="lazy" />
+                    </div>
+                    <figcaption class="mt-3 text-sm text-gray-500 text-center italic">{img2.caption}</figcaption>
+                  </figure>
+                </div>
+              );
+              i += 2;
+            } else {
+              elements.push(
+                <figure class="fade-in-up mb-8">
+                  <div class="overflow-hidden rounded-2xl shadow-md">
+                    <img src={img.src} alt={img.caption} class="w-full h-auto object-contain bg-gray-50" loading="lazy" />
+                  </div>
+                  <figcaption class="mt-3 text-sm text-gray-500 text-center italic">{img.caption}</figcaption>
+                </figure>
+              );
+              i += 1;
+            }
+          }
+          return elements;
+        })()}
+      </div>
+    ))}
+
+    <!-- Video -->
+    {videoSrc && (
+      <div class="mt-16 md:mt-24">
+        <h2 class="fade-in-up text-sm font-semibold uppercase tracking-widest text-gray-400 mb-10" style="font-family: var(--font-body);">Demo</h2>
+        <figure class="fade-in-up">
+          <div class="overflow-hidden rounded-2xl shadow-md bg-gray-900">
+            <video
+              src={videoSrc}
+              class="w-full h-auto"
+              controls
+              autoplay
+              muted
+              loop
+              playsinline
+            >
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          {videoCaption && (
+            <figcaption class="mt-3 text-sm text-gray-500 text-center italic">{videoCaption}</figcaption>
+          )}
+        </figure>
+      </div>
+    )}
+
+    <!-- Navigation -->
+    <div class="mt-20 pt-8 border-t border-gray-200/60">
+      <div class="flex items-center justify-between">
+        {prevProject ? (
+          <a
+            href={prevProject.href}
+            class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300"
+          >
+            <svg class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+            </svg>
+            <span class="text-sm font-medium uppercase tracking-wide">{prevProject.label}</span>
+          </a>
+        ) : <div />}
+
+        {nextProject ? (
+          <a
+            href={nextProject.href}
+            class="group flex items-center gap-2 text-gray-500 hover:text-charcoal transition-colors duration-300 ml-auto"
+          >
+            <span class="text-sm font-medium uppercase tracking-wide">{nextProject.label}</span>
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        ) : <div />}
+      </div>
+    </div>
+  </section>
+</Layout>
